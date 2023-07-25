@@ -10,7 +10,9 @@ use App\Http\Controllers\LoggedController;
 
 Route::get('/', [GuestController :: class, 'index']) -> name('project.index');
 
-Route :: get('/show/{id}', [LoggedController :: class, 'show']) -> name('project.show');
+Route :: get('/show/{id}', [LoggedController :: class, 'show'])
+    -> middleware(['auth'])
+    -> name('project.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
